@@ -107,7 +107,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https:/www.youtube.com/embed/p76jFrwbCDM"
+    "video": "https://www.youtube.com/embed/p76jFrwbCDM"
   },
   {
     "id": 13,
