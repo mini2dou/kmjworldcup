@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.match {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-direction: column; /* 모바일: 위아래 */
+}
+
+@media (min-width: 768px) {
+  .match {
+    flex-direction: row; /* 데스크탑: 좌우 */
+  }
+  .match > section {
+    flex: 1; /* 두 카드 반반 */
+  }
+}
