@@ -13,15 +13,25 @@ function shuffle<T>(arr: T[]) {
   return a;
 }
 
+function titleImageForCategory(category: Category) {
+  if (category === "무대") return "/main/title_stage1.png";
+  if (category === "보컬") return "/main/title_vocal1.png";
+  return "/main/title_dance1.png";
+}
+
 export default function PlayClient() {
   const router = useRouter();
   const sp = useSearchParams();
   const category = (sp.get("category") as Category) ?? "무대";
 
+  const titleImgSrc = titleImageForCategory(category);
+
   const initialPool = useMemo(() => {
     const filtered = candidates.filter((c) => c.categories.includes(category));
     return shuffle(filtered);
   }, [category]);
+
+  const totalCount = initialPool.length;
 
   const [queue, setQueue] = useState<Candidate[]>([]);
   const [winners, setWinners] = useState<Candidate[]>([]);
@@ -34,19 +44,16 @@ export default function PlayClient() {
   }, [initialPool]);
 
   useEffect(() => {
-    // 후보가 0명이면 홈으로 (데이터/쿼리 문제)
     if (initialPool.length === 0) {
       router.push("/");
       return;
     }
 
-    // 우승: queue에 1명만 남고 winners 비었으면 끝
     if (queue.length === 1 && winners.length === 0) {
       router.push(`/result?winnerId=${queue[0].id}`);
       return;
     }
 
-    // 라운드 끝: queue 비면 winners로 다음 라운드
     if (queue.length === 0 && winners.length > 0) {
       if (winners.length === 1) {
         router.push(`/result?winnerId=${winners[0].id}`);
@@ -58,7 +65,6 @@ export default function PlayClient() {
       return;
     }
 
-    // 홀수 자동통과: queue 1명 남고 winners도 있으면 자동 승자 처리
     if (queue.length === 1 && winners.length > 0) {
       setWinners((prev) => [...prev, queue[0]]);
       setQueue([]);
@@ -66,7 +72,6 @@ export default function PlayClient() {
       return;
     }
 
-    // pair 없으면 새로 세팅
     if (!pair && queue.length >= 2) {
       setPair({ left: queue[0], right: queue[1] });
     }
@@ -78,24 +83,107 @@ export default function PlayClient() {
     setPair(null);
   };
 
+  // 진행률(0~100)
+  const remaining = queue.length + winners.length;
+  const progressRaw = totalCount > 0 ? (totalCount - remaining) / totalCount : 0;
+  const progress = Math.max(0, Math.min(1, progressRaw));
+  const progressPercent = Math.round(progress * 100);
+
   if (!pair) {
     return (
-      <main style={{ maxWidth: 960, margin: "0 auto", padding: 16 }}>
-        <h2 style={{ fontSize: 20, fontWeight: 800 }}>{category} 월드컵</h2>
-        <p style={{ marginTop: 10, opacity: 0.8 }}>준비 중...</p>
+      <main style={pageStyle}>
+        <Header titleImgSrc={titleImgSrc} progress={progress} progressPercent={progressPercent} />
+        <p style={{ marginTop: 10, opacity: 0.75, textAlign: "center" }}>준비 중...</p>
       </main>
     );
   }
 
   return (
-    <main style={{ maxWidth: 960, margin: "0 auto", padding: 16 }}>
-      <h2 style={{ fontSize: 20, fontWeight: 800 }}>{category} 월드컵</h2>
+    <main style={pageStyle}>
+      <Header titleImgSrc={titleImgSrc} progress={progress} progressPercent={progressPercent} />
 
-      <div className="match">
+      {/* ✅ 모바일 1열 / PC 2열 */}
+      <div className="match-grid" style={matchGridStyle}>
         <CandidateCard candidate={pair.left} onSelect={() => pick(pair.left)} />
         <CandidateCard candidate={pair.right} onSelect={() => pick(pair.right)} />
       </div>
     </main>
+  );
+}
+
+/* ---------- styles ---------- */
+const pageStyle: React.CSSProperties = {
+  maxWidth: 980,
+  margin: "0 auto",
+  padding: 16,
+};
+
+const matchGridStyle: React.CSSProperties = {
+  marginTop: 12,
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr", // ✅ PC에서 2열 고정
+  gap: 14,
+  alignItems: "start",
+};
+
+function Header({
+  titleImgSrc,
+  progress,
+  progressPercent,
+}: {
+  titleImgSrc: string;
+  progress: number; // 0~1
+  progressPercent: number;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      {/* ✅ 타이틀 더 작게 */}
+      <img
+        src={titleImgSrc}
+        alt="월드컵 타이틀"
+        style={{
+          width: "min(200px, 60vw)", // 👈 줄임
+          height: "auto",
+          display: "block",
+          margin: "0 auto",
+        }}
+      />
+
+      <div
+        aria-label={`progress ${progressPercent}%`}
+        style={{
+          width: "100%",
+          maxWidth: 420,
+          height: 10,
+          borderRadius: 999,
+          background: "#e5e7eb",
+          overflow: "hidden",
+          marginTop: 10,
+        }}
+      >
+        <div
+          style={{
+            width: `${progress * 100}%`,
+            height: "100%",
+            background: "#4F63FF",
+            borderRadius: 999,
+            transition: "width 180ms ease",
+          }}
+        />
+      </div>
+
+      <div style={{ marginTop: 6, fontSize: 12, opacity: 0.6 }}>{progressPercent}%</div>
+
+      {/* ✅ CSS 한 줄로 PC 2열 만들기 (인라인로는 media query가 어려워서) */}
+      <style>{`
+        @media (min-width: 900px) {
+          .match-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+          }
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -112,12 +200,19 @@ function CandidateCard({
         border: "1px solid #e5e7eb",
         borderRadius: 14,
         padding: 12,
+        background: "#fff",
+        maxWidth: 420,
+        margin:"0 auto"
       }}
     >
-      <div style={{ fontSize: 18, fontWeight: 800 }}>{candidate.name}</div>
+      {/* 후보 이름 */}
+      <div style={{fontSize: 16, fontWeight: 400, fontFamily: "Rimgul", letterSpacing: "0.02em", textAlign: "center"}}>
+        {candidate.name}
+      </div>
 
-      <div style={{ marginTop: 10 }}>
-        <div style={{ position: "relative", paddingTop: "56.25%" }}>
+      {/* 영상 */}
+      <div style={{ marginTop: 8 }}>
+        <div style={{ position: "relative", paddingTop: "56.25%"}}>
           <iframe
             src={candidate.video}
             title={candidate.name}
@@ -135,22 +230,32 @@ function CandidateCard({
         </div>
       </div>
 
+      {/* ✅ SELECT 버튼 더 작게 + 스크롤 줄이기 */}
       <button
         onClick={onSelect}
+        aria-label={`${candidate.name} 선택`}
         style={{
-          marginTop: 12,
+          marginTop: 10,
           width: "100%",
-          padding: "12px 14px",
-          borderRadius: 12,
-          border: "none",
-          background: "#111",
-          color: "#fff",
-          fontWeight: 800,
+          background: "transparent",
+          border: 0,
+          padding: 0,
           cursor: "pointer",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        이거 선택
+        <img
+          src="/main/btn_select.png"
+          alt="SELECT"
+          style={{
+            width: "min(220px, 85%)", // 👈 줄임
+            height: "auto",
+            display: "block",
+          }}
+        />
       </button>
     </section>
   );
 }
+

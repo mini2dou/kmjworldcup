@@ -1,54 +1,122 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Category } from "./data/candidates";
-
-const categories: Category[] = ["무대", "보컬", "댄스"];
 
 export default function HomePage() {
   const router = useRouter();
-  const [selected, setSelected] = useState<Category>("무대");
+
+  const go = (category: string) => {
+    router.push(`/play?category=${encodeURIComponent(category)}`);
+  };
 
   return (
-    <main style={{ maxWidth: 720, margin: "0 auto", padding: 16 }}>
-      <h1 style={{ fontSize: 28, fontWeight: 700 }}>김민재 이상형 월드컵</h1>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#ffffff", // ✅ 완전 흰 배경
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 16,
+      }}
+    >
+      {/* 전체 컨텐츠 래퍼 */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 360,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {/* 로고 */}
+        <img
+          src="/main/logo.png"
+          alt="Choose Your MHAE"
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+            marginBottom: 48, // ✅ 로고 ↔ 버튼 간격 크게
+          }}
+        />
 
-      <div style={{ display: "flex", gap: 8, marginTop: 16, flexWrap: "wrap" }}>
-        {categories.map((c) => (
+        {/* 버튼 영역 */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 14, // 버튼 사이 간격
+          }}
+        >
           <button
-            key={c}
-            onClick={() => setSelected(c)}
+            onClick={() => go("무대")}
+            aria-label="무대 월드컵 시작"
             style={{
-              padding: "10px 14px",
-              borderRadius: 10,
-              border: "1px solid #ddd",
-              background: selected === c ? "#111" : "#fff",
-              color: selected === c ? "#fff" : "#111",
+              background: "transparent",
+              border: 0,
+              padding: "6px 0",
               cursor: "pointer",
             }}
           >
-            {c}
+            <img
+              src="/main/btn_stage.png"
+              alt="STAGE"
+              style={{
+                width: 200,
+                height: "auto",
+                display: "block",
+              }}
+            />
           </button>
-        ))}
-      </div>
 
-      <button
-        onClick={() => router.push(`/play?category=${encodeURIComponent(selected)}`)}
-        style={{
-          marginTop: 16,
-          width: "100%",
-          padding: "12px 14px",
-          borderRadius: 12,
-          border: "none",
-          background: "#2563eb",
-          color: "white",
-          fontWeight: 700,
-          cursor: "pointer",
-        }}
-      >
-        시작하기
-      </button>
+          <button
+            onClick={() => go("보컬")}
+            aria-label="보컬 월드컵 시작"
+            style={{
+              background: "transparent",
+              border: 0,
+              padding: "6px 0",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src="/main/btn_vocal.png"
+              alt="VOCAL"
+              style={{
+                width: 200,
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </button>
+
+          <button
+            onClick={() => go("댄스")}
+            aria-label="댄스 월드컵 시작"
+            style={{
+              background: "transparent",
+              border: 0,
+              padding: "6px 0",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src="/main/btn_dance.png"
+              alt="DANCE"
+              style={{
+                width: 200,
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </button>
+        </div>
+      </div>
     </main>
   );
 }
+
+

@@ -33,3 +33,11 @@ body {
     flex: 1; /* 두 카드 반반 */
   }
 }
+
+@font-face {
+  font-family: 'Rimgul';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Limgul12.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}

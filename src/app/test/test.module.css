@@ -1,0 +1,156 @@
+.y2k {
+  min-height: 100vh;
+  padding: 36px 20px 60px;
+  display: grid;
+  place-items: start center;
+  gap: 28px;
+
+  background:
+    radial-gradient(900px 420px at 55% 20%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, #a9b8ff 0%, #b7c2ff 30%, #d9e6ff 70%, #f7fbff 100%),
+    radial-gradient(rgba(74,88,170,.18) 1.1px, rgba(0,0,0,0) 1.2px);
+  background-size: auto, auto, 22px 22px;
+}
+
+/* ---------- header ---------- */
+.top {
+  width: min(820px, 100%);
+  text-align: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 800;
+  color: #141a3a;
+  text-shadow: 0 2px 0 rgba(255,255,255,.55);
+}
+
+.title {
+  font-size: 44px;
+  font-style: italic;
+}
+
+.spark {
+  font-size: 28px;
+  transform: translateY(-8px);
+}
+
+.smile {
+  font-size: 20px;
+  opacity: .8;
+  transform: translateY(-10px);
+}
+
+.brand2 {
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 900;
+  margin-top: -6px;
+  color: #141a3a;
+  text-shadow: 0 2px 0 rgba(255,255,255,.55);
+}
+
+.chips {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.6);
+  border: 1px solid rgba(20,26,58,.35);
+  box-shadow: 0 6px 18px rgba(20,26,58,.12);
+  color: #141a3a;
+}
+
+.dark {
+  background: rgba(20,26,58,.92);
+  color: #fff;
+  border-color: rgba(255,255,255,.25);
+}
+
+/* ---------- stage ---------- */
+.stage {
+  width: min(920px, 100%);
+  padding: 28px 16px 40px;
+}
+
+.panel {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 34px 20px 38px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.58);
+  border: 1px solid rgba(20,26,58,.22);
+  box-shadow:
+    0 16px 38px rgba(20,26,58,.14),
+    inset 0 1px 0 rgba(255,255,255,.65);
+  display: grid;
+  place-items: center;
+}
+
+.startBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 픽셀(계단) 모서리 */
+.frame,
+.inner {
+  clip-path: polygon(
+    0% 8px, 8px 8px, 8px 0%,
+    calc(100% - 8px) 0%, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0% calc(100% - 8px)
+  );
+}
+
+.frame {
+  display: inline-block;
+  padding: 7px;
+  background: #cfd6ff;
+  border: 2px solid #6b75c9;
+  box-shadow:
+    0 10px 20px rgba(30, 40, 120, .25),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.inner {
+  display: block;
+  min-width: 260px;
+  padding: 14px 26px;
+  text-align: center;
+  font-weight: 700;
+  color: #2c3a8c;
+  background: linear-gradient(#ffffff, #e9edff);
+  border: 2px solid #6b75c9;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+/* hover / active */
+.startBtn:hover .inner {
+  transform: translateY(-1px);
+}
+
+.startBtn:active .inner {
+  transform: translateY(1px);
+}
+
+.cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -14px;
+  bottom: -10px;
+  background:
+    linear-gradient(45deg, transparent 48%, #2e4096 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, #2e4096 50%, transparent 52%);
+}

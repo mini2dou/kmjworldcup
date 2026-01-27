@@ -15,70 +15,97 @@ export default function ResultClient() {
 
   if (!winner) {
     return (
-      <main style={{ maxWidth: 720, margin: "0 auto", padding: 16 }}>
-        <p>결과를 불러올 수 없어. 다시 시작해줘.</p>
+      <main
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 16,
+        }}
+      >
+        <div style={{ width: "100%", maxWidth: 720, textAlign: "center" }}>
+          <p>ERROR!</p>
+          <button
+            onClick={() => router.push("/")}
+            style={{
+              marginTop: 12,
+              width: "100%",
+              padding: "12px 14px",
+              borderRadius: 12,
+              border: "none",
+              background: "#2563eb",
+              color: "white",
+              fontWeight: 800,
+              cursor: "pointer",
+            }}
+          >
+            HOME
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 16,
+      }}
+    >
+      <div style={{ width: "100%", maxWidth: 960, textAlign: "center" }}>
+        <h2
+          style={{
+            fontSize: 28,
+            fontWeight: 900,
+            margin: 0,
+            lineHeight: 1.2,
+          }}
+        >
+          🏆 {winner.name} 🏆
+        </h2>
+
+        <div style={{ marginTop: 14 }}>
+          <div style={{ position: "relative", paddingTop: "56.25%" }}>
+            <iframe
+              src={winner.video}
+              title={winner.name}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                border: 0,
+                borderRadius: 12,
+              }}
+            />
+          </div>
+        </div>
+
         <button
           onClick={() => router.push("/")}
           style={{
-            marginTop: 12,
+            marginTop: 16,
             width: "100%",
             padding: "12px 14px",
             borderRadius: 12,
             border: "none",
             background: "#2563eb",
             color: "white",
-            fontWeight: 800,
+            fontWeight: 900,
             cursor: "pointer",
+            letterSpacing: "0.04em",
           }}
         >
-          홈으로
+          RESTART
         </button>
-      </main>
-    );
-  }
-
-  return (
-    <main style={{ maxWidth: 960, margin: "0 auto", padding: 16 }}>
-      <h2 style={{ fontSize: 24, fontWeight: 900 }}>최종 1위</h2>
-      <div style={{ marginTop: 8, fontSize: 20, fontWeight: 800 }}>
-        {winner.name}
       </div>
-
-      <div style={{ marginTop: 12 }}>
-        <div style={{ position: "relative", paddingTop: "56.25%" }}>
-          <iframe
-            src={winner.video}
-            title={winner.name}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              border: 0,
-              borderRadius: 12,
-            }}
-          />
-        </div>
-      </div>
-
-      <button
-        onClick={() => router.push("/")}
-        style={{
-          marginTop: 16,
-          width: "100%",
-          padding: "12px 14px",
-          borderRadius: 12,
-          border: "none",
-          background: "#2563eb",
-          color: "white",
-          fontWeight: 800,
-          cursor: "pointer",
-        }}
-      >
-        다시 하기
-      </button>
     </main>
   );
 }

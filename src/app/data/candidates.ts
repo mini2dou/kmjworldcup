@@ -83,7 +83,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/kjvqqxypkps"
+    "video": "https://www.youtube.com/embed/6rWW-MGPrYk"
   },
   {
     "id": 10,
@@ -295,7 +295,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 36,
-    "name": "260125 tiktok",
+    "name": "260125 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -303,7 +303,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 37,
-    "name": "260121 tiktok",
+    "name": "260121 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -311,7 +311,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 38,
-    "name": "260114 tiktok",
+    "name": "Betcha",
     "categories": [
       "댄스"
     ],
@@ -319,7 +319,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 39,
-    "name": "260113 tiktok",
+    "name": "Smooth Criminal",
     "categories": [
       "댄스"
     ],
@@ -327,7 +327,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 40,
-    "name": "251227 tiktok",
+    "name": "Gila Gila",
     "categories": [
       "댄스"
     ],
@@ -335,23 +335,23 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 41,
-    "name": "251225 tiktok",
+    "name": "Last Christmas",
     "categories": [
       "댄스"
     ],
-    "video": "https://www.youtube.com/embed/YKbnK_GV2NY"
+    "video": "https://www.youtube.com/embed/qbsVWGAClNg"
   },
   {
     "id": 42,
-    "name": "251225 tiktok",
+    "name": "251225 TIKTOK",
     "categories": [
       "댄스"
     ],
-    "video": "https://www.youtube.com/embed/YKbnK_GV2NY"
+    "video": "https://www.youtube.com/embed/WUTJ42dwnUY"
   },
   {
     "id": 43,
-    "name": "251218 tiktok",
+    "name": "de la mama",
     "categories": [
       "댄스"
     ],
@@ -359,7 +359,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 44,
-    "name": "251212 tiktok",
+    "name": "Rich Girl",
     "categories": [
       "댄스"
     ],
@@ -367,7 +367,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 45,
-    "name": "251116 tiktok",
+    "name": "Folded",
     "categories": [
       "댄스"
     ],
@@ -375,7 +375,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 46,
-    "name": "251028 tiktok",
+    "name": "251028 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -383,7 +383,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 47,
-    "name": "251024 tiktok",
+    "name": "251024 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -391,7 +391,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 48,
-    "name": "251021 tiktok",
+    "name": "Don't do it",
     "categories": [
       "댄스"
     ],
@@ -399,7 +399,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 49,
-    "name": "251015 tiktok",
+    "name": "251015 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -407,7 +407,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 50,
-    "name": "251008 tiktok",
+    "name": "251008 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -415,7 +415,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 51,
-    "name": "250906 tiktok",
+    "name": "Confident",
     "categories": [
       "댄스"
     ],
@@ -423,7 +423,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 52,
-    "name": "250828 tiktok",
+    "name": "250828 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -431,7 +431,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 53,
-    "name": "250826 tiktok",
+    "name": "Bubble Gum",
     "categories": [
       "댄스"
     ],
@@ -439,7 +439,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 54,
-    "name": "250821 tiktok",
+    "name": "Cruel Summer",
     "categories": [
       "댄스"
     ],
@@ -447,7 +447,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 55,
-    "name": "250809 tiktok",
+    "name": "Buzzin'",
     "categories": [
       "댄스"
     ],
@@ -463,7 +463,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 57,
-    "name": "250630 tiktok",
+    "name": "250630 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -471,7 +471,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 58,
-    "name": "250630 tiktok (올드스쿨 뉴스쿨)",
+    "name": "Old School New School",
     "categories": [
       "댄스"
     ],
@@ -479,7 +479,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 59,
-    "name": "250626 tiktok",
+    "name": "250626 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -487,7 +487,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 60,
-    "name": "250623 tiktok",
+    "name": "250623 TIKTOK",
     "categories": [
       "댄스"
     ],
@@ -495,7 +495,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 61,
-    "name": "250528 tiktok",
+    "name": "Baby",
     "categories": [
       "댄스"
     ],
@@ -503,7 +503,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 62,
-    "name": "250521 tiktok",
+    "name": "HERE",
     "categories": [
       "댄스"
     ],
@@ -511,7 +511,7 @@ export const candidates: Candidate[] = [
   },
   {
     "id": 63,
-    "name": "250520 tiktok",
+    "name": "Missing You",
     "categories": [
       "댄스"
     ],
@@ -708,5 +708,13 @@ export const candidates: Candidate[] = [
       "보컬"
     ],
     "video": "https://www.youtube.com/embed/gBqJn6Fv_ng?start=42"
+  },
+  {
+    "id": 88,
+    "name": "250310 TIKTOK",
+    "categories": [
+      "댄스"
+    ],
+    "video": "https://www.youtube.com/embed/wLa8mRC5znk"
   }
 ];
