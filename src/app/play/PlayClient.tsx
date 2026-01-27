@@ -121,9 +121,9 @@ const pageStyle: React.CSSProperties = {
 const matchGridStyle: React.CSSProperties = {
   marginTop: 12,
   display: "grid",
-  gridTemplateColumns: "1fr 1fr", // ✅ PC에서 2열 고정
   gap: 14,
   alignItems: "start",
+  justifyItems: "center"
 };
 
 function Header({
@@ -176,7 +176,10 @@ function Header({
 
       {/* ✅ CSS 한 줄로 PC 2열 만들기 (인라인로는 media query가 어려워서) */}
       <style>{`
-        @media (min-width: 900px) {
+  /* 세로(폰) 기본: 1열은 matchGridStyle에서 이미 적용됨 */
+
+  /* ✅ 가로가 더 긴 화면(PC/아이패드 가로 등)에서는 2열 */
+        @media (orientation: landscape) {
           .match-grid {
             grid-template-columns: 1fr 1fr;
             gap: 14px;
