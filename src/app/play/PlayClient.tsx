@@ -182,7 +182,7 @@ function Header({
   .match-grid {
     grid-template-columns: repeat(2, minmax(0, 420px));
     justify-content: center;   /* 핵심 */
-    column-gap: 24px;          /* 카드 사이 거리 직접 제어 */
+    column-gap: 10px;          /* 카드 사이 거리 직접 제어 */
   }
 }
       `}</style>
@@ -202,9 +202,9 @@ function CandidateCard({
       style={{
         border: "1px solid #e5e7eb",
         borderRadius: 14,
-        padding: 10,
+        padding: 8,
         background: "#fff",
-        maxWidth: 320,
+        maxWidth: 300,
         margin:"0 auto"
       }}
     >
@@ -252,7 +252,7 @@ function CandidateCard({
           src="/main/btn_select.png"
           alt="SELECT"
           style={{
-            width: "min(180px, 70%)", // 👈 줄임
+            width: "min(150px, 65%)", // 👈 줄임
             height: "auto",
             display: "block",
           }}
