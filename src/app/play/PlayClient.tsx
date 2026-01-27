@@ -142,7 +142,7 @@ function Header({
         src={titleImgSrc}
         alt="월드컵 타이틀"
         style={{
-          width: "min(200px, 60vw)", // 👈 줄임
+          width: "min(180px, 50vw)", // 👈 줄임
           height: "auto",
           display: "block",
           margin: "0 auto",
