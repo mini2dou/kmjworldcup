@@ -33,12 +33,12 @@ export default function HomePage() {
         {/* 로고 */}
         <img
           src="/main/logo.png"
-          alt="Choose Your MHAE"
+          alt="Choose Your MINJAE"
           style={{
-            width: "100%",
+            width: "min(320px, 82vw)",
             height: "auto",
             display: "block",
-            marginBottom: 48, // ✅ 로고 ↔ 버튼 간격 크게
+            marginBottom: 36, // ✅ 로고 ↔ 버튼 간격 크게
           }}
         />
 
@@ -48,7 +48,7 @@ export default function HomePage() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 14, // 버튼 사이 간격
+            gap: 10, // 버튼 사이 간격
           }}
         >
           <button
@@ -65,7 +65,7 @@ export default function HomePage() {
               src="/main/btn_stage.png"
               alt="STAGE"
               style={{
-                width: 200,
+                width: "min(200px, 72vw)",
                 height: "auto",
                 display: "block",
               }}
@@ -86,7 +86,7 @@ export default function HomePage() {
               src="/main/btn_vocal.png"
               alt="VOCAL"
               style={{
-                width: 200,
+                width: "min(200px, 72vw)",
                 height: "auto",
                 display: "block",
               }}
@@ -107,7 +107,7 @@ export default function HomePage() {
               src="/main/btn_dance.png"
               alt="DANCE"
               style={{
-                width: 200,
+                width: "min(200px, 72vw)",
                 height: "auto",
                 display: "block",
               }}

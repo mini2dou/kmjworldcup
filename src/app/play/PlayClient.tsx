@@ -123,7 +123,6 @@ const matchGridStyle: React.CSSProperties = {
   display: "grid",
   gap: 14,
   alignItems: "start",
-  justifyItems: "center"
 };
 
 function Header({
@@ -172,19 +171,20 @@ function Header({
         />
       </div>
 
-      <div style={{ marginTop: 6, fontSize: 12, opacity: 0.6 }}>{progressPercent}%</div>
+      <div style={{ marginTop: 6, fontSize: 12, opacity: 0.6, fontFamily: "Rimgul"}}>{progressPercent}%</div>
 
       {/* ✅ CSS 한 줄로 PC 2열 만들기 (인라인로는 media query가 어려워서) */}
       <style>{`
   /* 세로(폰) 기본: 1열은 matchGridStyle에서 이미 적용됨 */
 
   /* ✅ 가로가 더 긴 화면(PC/아이패드 가로 등)에서는 2열 */
-        @media (orientation: landscape) {
-          .match-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-          }
-        }
+@media (orientation: landscape) {
+  .match-grid {
+    grid-template-columns: repeat(2, minmax(0, 420px));
+    justify-content: center;   /* 핵심 */
+    column-gap: 24px;          /* 카드 사이 거리 직접 제어 */
+  }
+}
       `}</style>
     </div>
   );
@@ -202,9 +202,9 @@ function CandidateCard({
       style={{
         border: "1px solid #e5e7eb",
         borderRadius: 14,
-        padding: 12,
+        padding: 10,
         background: "#fff",
-        maxWidth: 420,
+        maxWidth: 320,
         margin:"0 auto"
       }}
     >
@@ -215,7 +215,7 @@ function CandidateCard({
 
       {/* 영상 */}
       <div style={{ marginTop: 8 }}>
-        <div style={{ position: "relative", paddingTop: "56.25%"}}>
+        <div className="videoWrap" style={{ position: "relative", paddingTop: "56.25%" }}>
           <iframe
             src={candidate.video}
             title={candidate.name}
@@ -252,7 +252,7 @@ function CandidateCard({
           src="/main/btn_select.png"
           alt="SELECT"
           style={{
-            width: "min(220px, 85%)", // 👈 줄임
+            width: "min(180px, 70%)", // 👈 줄임
             height: "auto",
             display: "block",
           }}
