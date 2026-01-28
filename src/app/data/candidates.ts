@@ -40,7 +40,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/OH7mqvVPImg"
+    "video": "https://www.youtube.com/embed/OH7mqvVPImg?start=16"
   },
   {
     "id": 5,
@@ -49,7 +49,7 @@ export const candidates: Candidate[] = [
       "무대",
       "댄스"
     ],
-    "video": "https://www.youtube.com/embed/R6FVC0GTrfw"
+    "video": "https://www.youtube.com/embed/R6FVC0GTrfw?start=236"
   },
   {
     "id": 6,
@@ -58,7 +58,7 @@ export const candidates: Candidate[] = [
       "무대",
       "댄스"
     ],
-    "video": "https://www.youtube.com/embed/VCoC7t18TcU"
+    "video": "https://www.youtube.com/embed/VCoC7t18TcU?start=77"
   },
   {
     "id": 7,
@@ -83,7 +83,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/6rWW-MGPrYk"
+    "video": "https://www.youtube.com/embed/6rWW-MGPrYk?start=36"
   },
   {
     "id": 10,
@@ -91,7 +91,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/QFZsbuBKl04"
+    "video": "https://www.youtube.com/embed/QFZsbuBKl04?start=134"
   },
   {
     "id": 11,
@@ -203,7 +203,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/nFUv-2ZckOw"
+    "video": "https://www.youtube.com/embed/nFUv-2ZckOw?start=70"
   },
   {
     "id": 25,
@@ -211,7 +211,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/5if3wDC-W7c"
+    "video": "https://www.youtube.com/embed/5if3wDC-W7c?start=37"
   },
   {
     "id": 26,
@@ -219,7 +219,7 @@ export const candidates: Candidate[] = [
     "categories": [
       "무대"
     ],
-    "video": "https://www.youtube.com/embed/6avXKQHogO4"
+    "video": "https://www.youtube.com/embed/6avXKQHogO4?start=148"
   },
   {
     "id": 27,
