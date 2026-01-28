@@ -158,6 +158,7 @@ const pageStyle: React.CSSProperties = {
   maxWidth: 960,
   margin: "0 auto",
   padding: 16,
+  paddingTop: "8svh",
   fontFamily: "Rimgul",
 };
 
