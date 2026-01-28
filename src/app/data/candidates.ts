@@ -716,5 +716,13 @@ export const candidates: Candidate[] = [
       "댄스"
     ],
     "video": "https://www.youtube.com/embed/wLa8mRC5znk"
+  },
+  {
+    "id": 89,
+    "name": "Live It Up",
+    "categories": [
+      "댄스"
+    ],
+    "video": "https://www.youtube.com/embed/wEpyxlSfUl4"
   }
 ];
