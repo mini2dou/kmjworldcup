@@ -36,6 +36,15 @@ export default function ResultClient() {
     [semiIds]
   );
 
+  const category = sp.get("category") ?? "";
+
+  const categoryLabel = useMemo(() => {
+  if (category === "무대") return "STAGE";
+  if (category === "보컬") return "VOCAL";
+  if (category === "댄스") return "DANCE";
+  return "";
+}, [category]);
+
   if (!winner) {
     return (
       <main style={pageStyle}>
@@ -84,7 +93,7 @@ export default function ResultClient() {
       <div style={winnerCardStyle}>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 14, opacity: 0.7 }}>최종 1위</div>
-          <div style={{ marginTop: 6, fontSize: 22, fontWeight: 400 }}>{winner.name}</div>
+          <div style={{ marginTop: 6, fontSize: 22, fontWeight: 400 }}>{categoryLabel ? `${categoryLabel} - ${winner.name}` : winner.name}</div>
         </div>
 
         <div style={{ marginTop: 10 }}>

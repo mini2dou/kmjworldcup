@@ -67,6 +67,7 @@ export default function PlayClient() {
         const winner = winners[0];
 
         const params = new URLSearchParams();
+        params.set("category", category); // ✅ 추가
         params.set("winnerId", String(winner.id));
         if (secondId != null) params.set("secondId", String(secondId));
         if (semiLoserIds.length > 0) params.set("semiIds", semiLoserIds.join(","));
