@@ -169,6 +169,7 @@ const pageStyle: React.CSSProperties = {
   padding: 16,
   paddingTop: "8svh",
   fontFamily: "Rimgul",
+  color: "#000000"
 };
 
 const winnerCardStyle: React.CSSProperties = {

@@ -154,6 +154,7 @@ const pageStyle: React.CSSProperties = {
   maxWidth: 980,
   margin: "0 auto",
   padding: 16,
+  color: "#000000"
 };
 
 const matchGridStyle: React.CSSProperties = {
