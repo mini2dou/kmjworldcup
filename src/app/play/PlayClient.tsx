@@ -33,6 +33,10 @@ export default function PlayClient() {
 
   const totalCount = initialPool.length;
 
+  const [roundSize, setRoundSize] = useState<number>(0); // 현재 라운드 시작 인원(2면 결승, 4면 4강)
+  const [secondId, setSecondId] = useState<number | null>(null);
+  const [semiLoserIds, setSemiLoserIds] = useState<number[]>([]);
+
   const [queue, setQueue] = useState<Candidate[]>([]);
   const [winners, setWinners] = useState<Candidate[]>([]);
   const [pair, setPair] = useState<{ left: Candidate; right: Candidate } | null>(null);
@@ -41,6 +45,10 @@ export default function PlayClient() {
     setQueue(initialPool);
     setWinners([]);
     setPair(null);
+
+    setRoundSize(initialPool.length);   // ✅ 첫 라운드 시작 인원
+    setSecondId(null);                 // ✅ 결과 초기화
+    setSemiLoserIds([]);
   }, [initialPool]);
 
   useEffect(() => {
@@ -56,12 +64,22 @@ export default function PlayClient() {
 
     if (queue.length === 0 && winners.length > 0) {
       if (winners.length === 1) {
-        router.push(`/result?winnerId=${winners[0].id}`);
+        const winner = winners[0];
+
+        const params = new URLSearchParams();
+        params.set("winnerId", String(winner.id));
+        if (secondId != null) params.set("secondId", String(secondId));
+        if (semiLoserIds.length > 0) params.set("semiIds", semiLoserIds.join(","));
+
+        router.push(`/result?${params.toString()}`);
         return;
       }
-      setQueue(shuffle(winners));
+
+      const nextQueue = shuffle(winners);
+      setQueue(nextQueue);
       setWinners([]);
       setPair(null);
+      setRoundSize(nextQueue.length); // ✅ 라운드 시작 인원 업데이트
       return;
     }
 
@@ -75,9 +93,28 @@ export default function PlayClient() {
     if (!pair && queue.length >= 2) {
       setPair({ left: queue[0], right: queue[1] });
     }
-  }, [queue, winners, pair, router, initialPool.length]);
+  }, [queue, winners, pair, router, initialPool.length, secondId, semiLoserIds, roundSize]);
 
   const pick = (picked: Candidate) => {
+    if (!pair) return;
+
+    const loser = picked.id === pair.left.id ? pair.right : pair.left;
+
+  // ✅ 결승(2강)에서 진 사람 = 2위
+    if (roundSize === 2) {
+      setSecondId(loser.id);
+    }
+
+  // ✅ 4강(준결승)에서 진 사람들 2명 = 공동 3위(4강 진출)
+const nextRoundSize = Math.ceil(roundSize / 2);
+
+if (nextRoundSize === 2) {
+  setSemiLoserIds((prev) => {
+    if (prev.includes(loser.id)) return prev;
+    return [...prev, loser.id];
+  });
+}
+
     setWinners((prev) => [...prev, picked]);
     setQueue((prev) => prev.slice(2));
     setPair(null);
@@ -93,7 +130,7 @@ export default function PlayClient() {
     return (
       <main style={pageStyle}>
         <Header titleImgSrc={titleImgSrc} progress={progress} progressPercent={progressPercent} />
-        <p style={{ marginTop: 10, opacity: 0.75, textAlign: "center" }}>준비 중...</p>
+        <p style={{ marginTop: 10, opacity: 0.75, textAlign: "center", fontFamily:"Rimgul" }}>LOADING...</p>
       </main>
     );
   }

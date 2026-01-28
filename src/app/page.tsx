@@ -12,12 +12,15 @@ export default function HomePage() {
   return (
     <main
       style={{
-        minHeight: "100vh",
+        minHeight: "100svh",
         background: "#ffffff", // ✅ 완전 흰 배경
         display: "flex",
+        justifyContent: "flex-start",
         alignItems: "center",
-        justifyContent: "center",
-        padding: 16,
+        paddingTop: "8svh",
+        paddingLeft: 16,
+        paddingRight: 16,
+        overflow: "hidden",
       }}
     >
       {/* 전체 컨텐츠 래퍼 */}
@@ -28,6 +31,7 @@ export default function HomePage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          margin: "0 auto"
         }}
       >
         {/* 로고 */}
